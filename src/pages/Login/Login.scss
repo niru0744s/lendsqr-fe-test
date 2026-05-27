@@ -1,0 +1,183 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: $white;
+
+  // Left Panel
+  &__left {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 0 60px 100px;
+    background-color: $white;
+    position: relative;
+
+    @include mobile-and-tablet {
+      display: none; // Hide on mobile/tablet as per Lendsqr's actual responsive layout
+    }
+  }
+
+  &__logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 80px;
+  }
+
+  &__logo-img {
+    height: 36px;
+    width: auto;
+  }
+
+  &__logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: $secondary-color;
+    letter-spacing: -0.05em;
+  }
+
+  &__illustration-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 50px;
+  }
+
+  &__illustration-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  // Right Panel
+  &__right {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+    padding: 40px;
+    box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.03);
+
+    @include mobile-and-tablet {
+      flex: 1;
+      width: 100%;
+      box-shadow: none;
+      padding: 30px 20px;
+      justify-content: flex-start;
+    }
+  }
+
+  // Mobile view header
+  &__mobile-logo {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 60px;
+    width: 100%;
+    max-width: 447px;
+
+    @include mobile-and-tablet {
+      display: flex;
+    }
+
+    img {
+      height: 28px;
+    }
+
+    span {
+      font-size: 22px;
+      font-weight: 700;
+      color: $secondary-color;
+    }
+  }
+
+  &__form-wrapper {
+    width: 100%;
+    max-width: 447px;
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    @include mobile-and-tablet {
+      margin-top: 20px;
+    }
+  }
+
+  &__header {
+    margin-bottom: 60px;
+
+    @include mobile {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 700;
+    color: $secondary-color;
+    margin-bottom: 10px;
+    letter-spacing: -0.04em;
+
+    @include mobile {
+      font-size: 32px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: $text-color;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__form {
+    width: 100%;
+  }
+
+  &__password-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+
+    .input-group {
+      margin-bottom: 0;
+    }
+  }
+
+  &__forgot-link {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: $primary-color;
+    letter-spacing: 0.1em;
+    margin-top: 24px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary-hover;
+      text-decoration: underline;
+    }
+  }
+
+  &__submit-btn {
+    margin-top: 30px;
+  }
+}
+
+// Fade in animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

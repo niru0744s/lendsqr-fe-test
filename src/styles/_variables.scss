@@ -1,0 +1,29 @@
+// Variables for Lendsqr theme
+$font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+// Colors
+$primary-color: #39CDCC;
+$primary-hover: #2db8b7;
+$secondary-color: #213F7D;
+$text-color: #545F7D;
+$text-light: #7582A3;
+$text-dark: #213F7D;
+$border-color: rgba(33, 63, 125, 0.15);
+$bg-color: #FBFBFB;
+$white: #FFFFFF;
+$error-color: #E4033B;
+
+// Layout
+$sidebar-width: 283px;
+$header-height: 100px;
+
+// Shadows & Radius
+$box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+$card-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+$border-radius: 8px;
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-large: 1200px;

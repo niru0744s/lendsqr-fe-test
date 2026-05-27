@@ -1,0 +1,38 @@
+@use 'variables' as *;
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: $bg-color;
+  color: $text-color;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-family: $font-family;
+}
+
+input, select, textarea {
+  border: none;
+  outline: none;
+  font-family: $font-family;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

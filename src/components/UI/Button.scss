@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use 'sass:color';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  padding: 15px 24px;
+  border-radius: $border-radius;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  height: 50px;
+  width: auto;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--full-width {
+    display: flex;
+    width: 100%;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-hover;
+      box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary-color;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: color.adjust($secondary-color, $lightness: -5%);
+      box-shadow: 0 4px 12px rgba($secondary-color, 0.2);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid $secondary-color;
+    color: $secondary-color;
+
+    &:hover:not(:disabled) {
+      background-color: rgba($secondary-color, 0.05);
+    }
+  }
+
+  &--text {
+    background-color: transparent;
+    color: $primary-color;
+    text-transform: none;
+    letter-spacing: normal;
+    padding: 0;
+    height: auto;
+    font-weight: 500;
+
+    &:hover:not(:disabled) {
+      color: $primary-hover;
+      text-decoration: underline;
+    }
+  }
+}
