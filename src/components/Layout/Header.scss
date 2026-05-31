@@ -1,0 +1,189 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.dashboard-header {
+  height: $header-height;
+  background-color: $white;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(33, 63, 125, 0.06);
+  @include flex-between;
+  padding: 0 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  @include mobile-and-tablet {
+    padding: 0 15px;
+    height: 70px;
+  }
+
+  // Left Section
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__menu-btn {
+    color: $secondary-color;
+    @include flex-center;
+    padding: 4px;
+    display: none; // Positioned after flex-center to override display: flex on desktop
+
+    @include mobile-and-tablet {
+      display: flex;
+    }
+  }
+
+  &__logo-wrapper {
+    display: flex;
+    align-items: center;
+    
+    img {
+      height: 30px;
+      
+      @include mobile-and-tablet {
+        height: 24px;
+      }
+    }
+  }
+
+  // Center Section (Search Bar)
+  &__center {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 40px;
+
+    @include mobile-and-tablet {
+      display: none; // Hidden on mobile, can be toggled or accessed in drawer
+    }
+  }
+
+  &__search-group {
+    display: flex;
+    width: 100%;
+    border: 1px solid rgba($secondary-color, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 40px;
+  }
+
+  &__search-input {
+    flex: 1;
+    padding: 0 15px;
+    font-size: 14px;
+    color: $secondary-color;
+    background-color: transparent;
+
+    &::placeholder {
+      color: rgba($secondary-color, 0.4);
+    }
+  }
+
+  &__search-btn {
+    width: 56px;
+    background-color: $primary-color;
+    @include flex-center;
+    color: $white;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+  }
+
+  // Right Section
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @include mobile-and-tablet {
+      gap: 15px;
+    }
+  }
+
+  &__docs-link {
+    font-size: 16px;
+    font-weight: 400;
+    color: $secondary-color;
+    text-decoration: none; // Removed default underline for cleaner look
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__notif-btn {
+    color: $secondary-color;
+    @include flex-center;
+    position: relative;
+    padding: 6px;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: rgba($secondary-color, 0.05);
+      color: $primary-color;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba($secondary-color, 0.03);
+      
+      .dashboard-header__profile-name {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba($secondary-color, 0.1);
+
+    @include mobile-and-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__profile-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: $secondary-color;
+    transition: color 0.2s ease;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__profile-arrow {
+    color: $secondary-color;
+    transition: transform 0.2s ease;
+
+    @include mobile {
+      display: none;
+    }
+  }
+}
