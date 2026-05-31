@@ -1,12 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/UI/Input';
 import { Button } from '../../components/UI/Button';
 import './Login.scss';
 
 export const Login: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // No-op for now as requested
+    navigate('/dashboard');
   };
 
   return (
