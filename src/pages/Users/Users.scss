@@ -1,0 +1,432 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.users-page {
+  width: 100%;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: $secondary-color;
+    margin-bottom: 40px;
+  }
+
+  // Statistics Grid
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+    margin-bottom: 40px;
+
+    @include mobile-and-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Table Container wrapper
+  &__table-container {
+    background-color: $white;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    border-radius: 4px;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.02);
+    padding: 30px;
+    position: relative;
+
+    @include mobile-and-tablet {
+      padding: 15px;
+    }
+  }
+
+  // Pagination controls
+  &__pagination {
+    margin-top: 20px;
+    @include flex-between;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
+
+// Stat Card Styling
+.stat-card {
+  background-color: $white;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  border-radius: 4px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.02);
+  padding: 20px 30px;
+  @include flex-column;
+  gap: 12px;
+
+  &__icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    @include flex-center;
+    
+    &--pink {
+      background-color: rgba(223, 24, 255, 0.1);
+      color: #DF18FF;
+    }
+    &--purple {
+      background-color: rgba(87, 24, 255, 0.1);
+      color: #5718FF;
+    }
+    &--orange {
+      background-color: rgba(245, 95, 23, 0.1);
+      color: #F55F17;
+    }
+    &--red {
+      background-color: rgba(255, 51, 102, 0.1);
+      color: #FF3366;
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-color;
+    letter-spacing: 0.05em;
+  }
+
+  &__value {
+    font-size: 24px;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+}
+
+// Table Loading styling
+.table-loading {
+  padding: 80px 0;
+  @include flex-center;
+  flex-direction: column;
+  gap: 15px;
+  color: $text-color;
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba($primary-color, 0.15);
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+// Base table configuration
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  position: relative;
+  min-height: 400px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+
+  th {
+    padding: 15px 12px;
+    color: $text-color;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(33, 63, 125, 0.08);
+  }
+
+  td {
+    padding: 20px 12px;
+    color: $text-color;
+    border-bottom: 1px solid rgba(33, 63, 125, 0.05);
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  tr {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.02);
+    }
+  }
+}
+
+.th-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .filter-icon {
+    cursor: pointer;
+    color: $text-color;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+      color: $primary-color;
+    }
+  }
+}
+
+// Status badge pills
+.status-pill {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+
+  &--active {
+    background-color: rgba(57, 205, 98, 0.08);
+    color: #39CD62;
+  }
+
+  &--inactive {
+    background-color: rgba(84, 95, 125, 0.08);
+    color: #545F7D;
+  }
+
+  &--pending {
+    background-color: rgba(233, 178, 0, 0.08);
+    color: #E9B200;
+  }
+
+  &--blacklisted {
+    background-color: rgba(228, 3, 59, 0.08);
+    color: #E4033B;
+  }
+}
+
+// Action Button / Kebab wrapper
+.kebab-wrapper {
+  position: relative;
+}
+
+.kebab-btn {
+  color: $text-color;
+  padding: 6px;
+  border-radius: 50%;
+  @include flex-center;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba($secondary-color, 0.05);
+  }
+}
+
+// Floating kebab menu actions
+.kebab-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: $white;
+  border: 1px solid rgba(33, 63, 125, 0.08);
+  border-radius: 4px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  width: 180px;
+  padding: 8px 0;
+  animation: fadeIn 0.15s ease;
+
+  button {
+    width: 100%;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $text-color;
+    transition: background-color 0.2s ease;
+    text-transform: none;
+    letter-spacing: normal;
+    justify-content: flex-start;
+
+    svg {
+      color: $text-color;
+    }
+
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+      color: $secondary-color;
+    }
+  }
+}
+
+// Absolute Custom Filter Dropdown panel
+.filter-panel {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background-color: $white;
+  border: 1px solid rgba(33, 63, 125, 0.08);
+  border-radius: 4px;
+  box-shadow: 3px 5px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  width: 320px;
+  z-index: 15;
+  animation: fadeIn 0.2s ease-out;
+
+  &__field {
+    @include flex-column;
+    margin-bottom: 20px;
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: $text-color;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      height: 40px;
+      border: 1px solid rgba(33, 63, 125, 0.15);
+      border-radius: 8px;
+      padding: 0 15px;
+      font-size: 14px;
+      color: $secondary-color;
+      background-color: transparent;
+
+      &:focus {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+
+    button {
+      flex: 1;
+      height: 40px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      @include flex-center;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .btn-reset {
+      background-color: transparent;
+      border: 1px solid $text-color;
+      color: $text-color;
+
+      &:hover {
+        background-color: rgba($text-color, 0.05);
+      }
+    }
+
+    .btn-filter {
+      background-color: $primary-color;
+      color: $white;
+
+      &:hover {
+        background-color: $primary-hover;
+      }
+    }
+  }
+}
+
+// Pagination Controls styles
+.pagination-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $text-color;
+  font-size: 14px;
+
+  select {
+    padding: 6px 12px;
+    border-radius: 4px;
+    background-color: rgba(33, 63, 125, 0.05);
+    color: $secondary-color;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+.pagination-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-nav-btn {
+  color: $secondary-color;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: rgba(33, 63, 125, 0.05);
+  @include flex-center;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($primary-color, 0.1);
+    color: $primary-color;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.page-num-btn {
+  color: rgba($secondary-color, 0.6);
+  font-size: 14px;
+  font-weight: 500;
+  width: 32px;
+  height: 32px;
+  @include flex-center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba($primary-color, 0.05);
+    color: $secondary-color;
+  }
+
+  &--active {
+    color: $secondary-color;
+    font-weight: 700;
+  }
+}
+
+.pagination-ellipsis {
+  color: $text-color;
+}
+
+// Helper utilities
+.text-truncate {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px 0;
+  color: $text-light;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
